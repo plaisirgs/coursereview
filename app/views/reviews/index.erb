@@ -1,0 +1,13 @@
+<% @reviews.each do |review| %> 
+     <i>Course Title:</i> <%= review.course.title %> <br> 
+     <i>Course Professor:</i> <%= review.course.professor %> <br> 
+     <i>Your Course Review:</i> <%= review.text %> <br>
+
+     <a class="button" href="/reviews/<%=review.id%>/edit">Edit</a> <br> 
+
+     <form method="post" action="/reviews/<%= review.id %>">
+     <input type="hidden" name="_method" value="delete">
+     <input type="submit" value="Delete">
+</form> <br> <br> <br> 
+<% end %> 
+

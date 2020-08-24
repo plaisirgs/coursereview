@@ -1,0 +1,5 @@
+<form action="/reviews/<%= @review.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  Edit Review: <input type="text" name="new_review" value="<%= @review.text %>"> 
+  <input type="submit"> 
+</form>

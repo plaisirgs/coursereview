@@ -1,0 +1,16 @@
+<h1> Review a course: </h1>
+
+<p style = "font-family: didot">
+
+<form action="/reviews" method="post">
+Select a course: <br> <br> <% @courese.each do |course| %>
+    <input type="radio" name="user[course_id][]" value="<%= course.id %>" id="<%= course.id %>"> <%= "\"#{course.title}\" by #{course.professor}" %> <br> <br> 
+<% end %> 
+
+Write a review: <br> <br> <input type="text" name="user[review]"> 
+
+<br> <br> <br> 
+<input type="submit" name="submit" id="submit" value="Submit"> 
+</form> 
+
+</p>
