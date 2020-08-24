@@ -14,6 +14,9 @@ class ReviewsController < ApplicationController
             redirect "/login"
         else 
             @courses = Course.all
+            puts("#####")
+            puts(@courses)
+            puts("########")
             erb :'/reviews/new'
         end
     end
