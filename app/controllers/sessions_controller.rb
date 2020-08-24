@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     post '/signup' do 
         is_admin = params[:email_address].include?("@chp.com") ? true : false
-        user = User.new(email: params[:email], password: params[:password], is admin: is_admin)
+        user = User.new(email_address: params[:email_address], password: params[:password], is_admin: is_admin)
         if user.save
             redirect "/login"
         else 
