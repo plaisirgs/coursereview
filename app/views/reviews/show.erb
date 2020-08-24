@@ -1,4 +1,4 @@
-Your review for <i><%= @review.COURSE.title %></i> by <%= @review.course.professor %>: <br> <br> 
+Your review for <i><%= @review.course.title %></i> by <%= @review.course.professor %>: <br> <br> 
 "<%= @review.text %>" <br>
 
 <% @user = current_user %> 
@@ -12,3 +12,4 @@ Your review for <i><%= @review.COURSE.title %></i> by <%= @review.course.profess
 <% end %> 
 
 <br> <br>
+<a class="button" href="/users/user_dashboard">Back to Dashboard</a>

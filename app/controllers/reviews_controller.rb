@@ -2,8 +2,6 @@ class ReviewsController < ApplicationController
     get '/reviews' do 
         if !logged_in?
             redirect "/login"
-        elsif  @user.is_admin = current_user
-            @reviews =Review.all
         else
             @user = current_user
             @reviews = Review.all.select { |review| review.user_id == @user.id } 
@@ -15,7 +13,7 @@ class ReviewsController < ApplicationController
         if !logged_in?
             redirect "/login"
         else 
-            @course = Courses.all
+            @courses = Course.all
             erb :'/reviews/new'
         end
     end
@@ -25,10 +23,10 @@ class ReviewsController < ApplicationController
             redirect "/login"
         else 
             @user = current_user
-            if (params[:user][:book_id] != nil)
+            if (params[:user][:course_id]!= nil)
                 if !(params[:user][:review].empty?)
-                    @book = Book.find_by_id(params[:user][:book_id][0].to_i)
-                    @review = Review.create(user_id: @user.id, book_id: @book.id, text: params[:user][:review])
+                    @course = Course.find_by_id(params[:user][:course_id][0].to_i)
+                    @review = Review.create(user_id: @user.id, course_id: @course.id, text: params[:user][:review])
                     redirect "/reviews/#{@review.id}"
                 elsif (params[:user][:review].empty?)
                     redirect "/reviews/new"
@@ -53,7 +51,7 @@ class ReviewsController < ApplicationController
         else
             @review = Review.find_by_id(params[:id])
             if @review == nil
-                redirect 'users/user_home'
+                redirect 'users/user_dashboard'
             elsif authorized?(@review)
                 erb :'/reviews/edit'
             else 
@@ -79,7 +77,7 @@ class ReviewsController < ApplicationController
         @user = current_user
         if @user.id == @review.user_id
             @review.delete
-            redirect '/users/user_home'
+            redirect '/users/user_dashboard'
         else 
             redirect '/logout'
         end 

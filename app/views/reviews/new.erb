@@ -1,9 +1,9 @@
 <h1> Review a course: </h1>
 
-<p style = "font-family: didot">
+<p style = "font-family: monospace">
 
 <form action="/reviews" method="post">
-Select a course: <br> <br> <% @courese.each do |course| %>
+Pick a course: <br> <br> <% @courses.each do |course| %>
     <input type="radio" name="user[course_id][]" value="<%= course.id %>" id="<%= course.id %>"> <%= "\"#{course.title}\" by #{course.professor}" %> <br> <br> 
 <% end %> 
 

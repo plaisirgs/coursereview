@@ -1,6 +1,10 @@
 require './config/environment'
+require "./app/models/user"
+require "./app/models/course"
+require "./app/models/review"
 
 class ApplicationController < Sinatra::Base
+
 
   configure do
     set :public_folder, 'public'
@@ -12,10 +16,6 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb :welcome
   end
-
-    # get '/' do
-    #   erb :"/application/home"
-    # end
 
     helpers do 
         def logged_in?
