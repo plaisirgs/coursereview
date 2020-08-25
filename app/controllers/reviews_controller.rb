@@ -14,19 +14,17 @@ class ReviewsController < ApplicationController
             redirect "/login"
         else 
             @courses = Course.all
-            puts("#####")
-            puts(@courses)
-            puts("########")
             erb :'/reviews/new'
         end
     end
     
-    post '/reviews' do 
+     post '/reviews' do 
         if !logged_in?
             redirect "/login"
         else 
+            puts "params==>>>#{params}"
             @user = current_user
-            if (params[:user][:course_id]!= nil)
+            if (params[:user][:course_id] != nil)
                 if !(params[:user][:review].empty?)
                     @course = Course.find_by_id(params[:user][:course_id][0].to_i)
                     @review = Review.create(user_id: @user.id, course_id: @course.id, text: params[:user][:review])
@@ -39,7 +37,6 @@ class ReviewsController < ApplicationController
     end
     
     get '/reviews/:id' do 
-        #make sure every controller action verifies if there's a user logged in 
         if !logged_in?
             redirect "/login"
         else 

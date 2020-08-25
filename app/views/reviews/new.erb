@@ -4,10 +4,12 @@
 
 <form action="/reviews" method="post">
 Pick a course: <br> <br> <% @courses.each do |course| %>
-    <input type="radio" name="user[course_id][]" value="<%= course.id %>" id="<%= course.id %>"> <%= "\"#{course.title}\" taught by #{course.professor}" %> <br> <br> 
+    <input type="radio" name="user[course_id][]" value="<%= course.id %>" id="<%= course.id %>"> <%= "#{course.category_id}:#{course.title} taught by Professor #{course.professor} Average Rating: #{course.rating}/5 stars" %> <br> <br> 
 <% end %> 
 
-Write a review: <br> <br> <input type="text" name="user[review]"> 
+Write a review: 
+<textarea rows="4" cols="50" name="user[review]">
+</textarea>
 
 <br> <br> <br> 
 <input type="submit" name="submit" id="submit" value="Submit"> 
