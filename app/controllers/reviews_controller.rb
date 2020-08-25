@@ -22,7 +22,6 @@ class ReviewsController < ApplicationController
         if !logged_in?
             redirect "/login"
         else 
-            puts "params==>>>#{params}"
             @user = current_user
             if (params[:user][:course_id] != nil)
                 if !(params[:user][:review].empty?)
