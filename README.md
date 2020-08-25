@@ -5,10 +5,11 @@ To install coursereview, follow these steps:
 
 -Fork and clone this repo.
 -Locate the app directory in your terminal.
--Type 'bundle install', 'rake db:migrate' and then 'rake db:seed'.
--Type 'shotgun'.
+-In the terminal, type 'bundle install', 'rake db:migrate' and then 'rake db:seed'.
+-In the terminal, type 'shotgun'.
 -In your favorite web browser, type 'http://localhost:9393/' in the address bar.
 -You will be navigated to the coursereview's homepage. On the homepage you can sign up or log in if you already have an account. 
+-Now you can submit course reviews.
 
 Contributing to coursereview
 
