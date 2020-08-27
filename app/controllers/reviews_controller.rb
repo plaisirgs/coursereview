@@ -63,18 +63,21 @@ class ReviewsController < ApplicationController
         if !logged_in?
             redirect "/login"
         else 
-            @user = current_user
-            @review = Review.find_by_id(params[:id])
-            @review.text = params[:new_review]
-            @review.save
-            redirect to "/reviews/#{@review.id}"
+            if authorized?
+                @review = Review.find_by_id(params[:id])
+                @review.text = params[:new_review]
+                @review.save
+                redirect to "/reviews/#{@review.id}"
+            else
+                redirect '/'
+            end
         end 
     end
 
     delete '/reviews/:id' do 
         @review = Review.find_by_id(params[:id])
         @user = current_user
-        if @user.id == @review.user_id
+        if authorized?
             @review.delete
             redirect '/users/user_dashboard'
         else 

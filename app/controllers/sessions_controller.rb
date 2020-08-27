@@ -5,12 +5,16 @@ class SessionsController < ApplicationController
 
     post '/signup' do 
         user = User.new(email_address: params[:email_address], password: params[:password])
+        if User.exists?(email_address: params[:email_address])
+            redirect '/signup'
+            end
         if user.save
             redirect "/login"
         else 
             erb :"/sessions/error"
         end
     end
+
 
     get '/login' do 
         erb :'/sessions/login'
